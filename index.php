@@ -5,8 +5,17 @@
 
 $nama_tamu = isset($_GET['to']) ? htmlspecialchars($_GET['to']) : 'Tamu Undangan';
 
-$pria   = "Marco S.Kom";
-$wanita = "Silva S.M";
+$pria   = "Marco";
+$wanita = "Yeji";
+
+// ... variabel yang sudah ada ...
+$pria   = "Marco";
+$wanita = "Yeji";
+
+// Tambahkan variabel baru di sini
+$ig_pria   = ""; 
+$ig_wanita = "yezyizhere";
+
 $tanggal_wedding = "2026-05-12";
 
 // JAM ACARA
@@ -735,13 +744,34 @@ body.opened .cover {
                 Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan memberikan doa restu pada hari bahagia pernikahan kami:
             </p>
 
-            <div style="margin: 60px 0;">
-                <h2 class="couple-name"><?= $pria ?></h2>
-                <p class="parents-text">Putra dari Bapak Fulan & Ibu Fulanah</p>
-                <h2 style="font-family: 'Playfair Display', serif; color: var(--primary); margin: 15px 0;">&</h2>
-                <h2 class="couple-name"><?= $wanita ?></h2>
-                <p class="parents-text">Putri dari Bapak Fulan & Ibu Fulanah</p>
-            </div>
+            <div style="margin: 50px 0;">
+    <div class="mempelai-detail" style="margin-bottom: 30px;">
+        <div style="width: 150px; height: 150px; margin: 0 auto 15px; border-radius: 50%; overflow: hidden; border: 3px solid var(--primary); padding: 5px;">
+            <img src="assets/pria.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" alt="Foto Pria">
+        </div>
+        <h2 class="couple-name"><?= $pria ?></h2>
+        <p style="font-size: 0.85rem; color: #999;">Putra dari Bapak Fulan & Ibu Fulanah</p>
+        <a href="https://instagram.com/<?= $ig_pria ?>" target="_blank" style="text-decoration: none; display: inline-flex; align-items: center; margin-top: 10px; color: var(--primary); font-size: 0.8rem;">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="16" style="margin-right: 5px;">
+    @<?= $ig_pria ?>
+</a>
+    </div>
+
+    <h2 style="font-family: 'Playfair Display', serif; color: var(--primary); margin: 10px 0; font-size: 1.5rem;">&</h2>
+
+    <div class="mempelai-detail" style="margin-top: 30px;">
+        <div style="width: 150px; height: 150px; margin: 0 auto 15px; border-radius: 50%; overflow: hidden; border: 3px solid var(--primary); padding: 5px;">
+            <img src="assets/wanita.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" alt="Foto Wanita">
+        </div>
+        <h2 class="couple-name"><?= $wanita ?></h2>
+        <p style="font-size: 0.85rem; color: #999;">Putri dari Bapak Fulan & Ibu Fulanah</p>
+        <a href="https://instagram.com/yezyizhere" target="_blank" style="...">
+        <a href="https://instagram.com/<?= $ig_wanita ?>" target="_blank" style="text-decoration: none; display: inline-flex; align-items: center; margin-top: 10px; color: var(--primary); font-size: 0.8rem;">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="16" style="margin-right: 5px;">
+    @<?= $ig_wanita ?>
+</a>
+    </div>
+</div>
 
             <div class="quotes-container">
     <div class="holy-verse">
