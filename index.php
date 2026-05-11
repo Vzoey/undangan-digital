@@ -538,13 +538,38 @@ $cover_bg = "assets/prewed.jpg";
 }
 
         /* --- COVER SECTION --- */
-        .cover {
-            height: 100vh; width: 100%; position: fixed;
-            top: 0; left: 0; display: flex; align-items: center;
-            justify-content: center; z-index: 1000;
-            transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1);
-            color: var(--white); text-align: center;
-        }
+        /* Cari bagian .cover Anda dan ubah/tambah menjadi seperti ini */
+.cover {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    /* Tambahkan visibility di sini */
+    transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1), visibility 1.2s;
+    color: var(--white);
+    text-align: center;
+}
+
+/* Tambahkan visibility: hidden agar elemen benar-benar hilang setelah transisi selesai */
+body.opened .cover { 
+    transform: translateY(-100%); 
+    visibility: hidden; 
+}
+
+/* Pastikan .main-content memiliki background solid (tidak transparan) */
+.main-content { 
+    opacity: 0; 
+    transition: opacity 1s ease 0.5s; 
+    position: relative;
+    z-index: 1;
+    background-color: #fdfaf5; /* Ganti dengan warna tema Anda */
+    min-height: 100vh;
+}
 
         .cover::before {
     content: '';
@@ -620,7 +645,30 @@ $cover_bg = "assets/prewed.jpg";
     font-weight: 600; cursor: pointer;
 }
 .comments-list {
-    margin-top: 30px; max-height: 400px; overflow-y: auto;
+    margin-top: 30px;
+    max-height: 380px;
+    overflow-y: auto;
+    padding-right: 8px;
+    scroll-behavior: smooth;
+}
+
+/* Scrollbar Modern */
+.comments-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.comments-list::-webkit-scrollbar-track {
+    background: #f3f3f3;
+    border-radius: 10px;
+}
+
+.comments-list::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+.comments-list::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
 }
 .comment-item {
     background: #fdfcfb; padding: 15px; border-radius: 15px;
@@ -858,7 +906,7 @@ $cover_bg = "assets/prewed.jpg";
                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" class="bank-logo" alt="BCA">
                     <p style="font-size: 12px; color: #999;">Nomor Rekening:</p>
                     <span class="account-number" id="rek-bca">1234 5678 90</span>
-                    <p style="font-size: 14px; font-weight: 600;">a.n <?= $pria ?></p>
+                    <p style="font-size: 14px; font-weight: 600;">a.n Marco</p>
                     <button class="btn-maps" style="margin-top: 15px; padding: 8px 20px; font-size: 11px;" onclick="copyNumber('rek-bca', this)">SALIN NO. REKENING</button>
                 </div>
 
@@ -866,7 +914,7 @@ $cover_bg = "assets/prewed.jpg";
     <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Gopay_logo.svg" class="bank-logo" alt="GOPAY">
     <p style="font-size: 12px; color: #999;">Nomor GoPay:</p>
     <span class="account-number" id="no-gopay">0812 3456 7890</span>
-    <p style="font-size: 14px; font-weight: 600;">a.n <?= $wanita ?></p>
+    <p style="font-size: 14px; font-weight: 600;">a.n Marco</p>
     <button class="btn-maps" style="margin-top: 15px; padding: 8px 20px; font-size: 11px;" onclick="copyNumber('no-gopay', this)">SALIN NOMOR GOPAY</button>
 </div>
             </div>
@@ -972,6 +1020,16 @@ setInterval(() => {
     }
 
 }, 1000);
+const comments = document.querySelectorAll('.comment-item');
+const commentsList = document.querySelector('.comments-list');
+
+if (comments.length > 3) {
+    commentsList.style.maxHeight = "380px";
+    commentsList.style.overflowY = "auto";
+} else {
+    commentsList.style.maxHeight = "none";
+    commentsList.style.overflowY = "hidden";
+}
     </script>
     <div class="flower flower1">🌸</div>
 <div class="flower flower2">✨</div>
