@@ -16,7 +16,7 @@ $wanita = "Yeji";
 $ig_pria   = ""; 
 $ig_wanita = "yezyizhere";
 
-$tanggal_wedding = "2026-05-12";
+$tanggal_wedding = "2026-05-17";
 
 // JAM ACARA
 $jam_akad        = "09.45 - 11.00 WIB";
@@ -54,7 +54,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['kirim_ucapan'])) {
         exit;
     }
 }
+// ===== KONFIGURASI COVER BACKGROUND =====
+$cover_type = "video"; // 'foto' atau 'video'
+
+// Jika pakai FOTO
 $cover_bg = "assets/prewed.jpg";
+
+// Jika pakai VIDEO (untuk preview sebelum undangan dibuka)
+$cover_video = "assets/cover-video.mp4"; // Ganti dengan path video Anda
+$cover_video_poster = "assets/prewed.jpg";
 ?>
 
 <!DOCTYPE html>
@@ -687,6 +695,128 @@ body.opened .cover {
         .comment-item strong { display: block; font-size: 14px; color: var(--text-dark); }
         .comment-item p { font-size: 13px; color: var(--text-light); margin-top: 5px; line-height: 1.5; }
 
+        /* Animasi untuk elemen saat muncul di scroll - versi semi 3D */
+    .scroll-reveal {
+        opacity: 0;
+        transform: translateY(50px) rotateX(15deg);
+        transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform-style: preserve-3d;
+        perspective: 1000px;
+    }
+    
+    .scroll-reveal.revealed {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg);
+    }
+    
+    /* Variasi animasi semi 3D kiri */
+    .scroll-reveal-left {
+        opacity: 0;
+        transform: translateX(-60px) rotateY(25deg);
+        transition: all 0.8s cubic-bezier(0.34, 1.2, 0.64, 1);
+        transform-style: preserve-3d;
+        perspective: 1000px;
+    }
+    
+    .scroll-reveal-left.revealed {
+        opacity: 1;
+        transform: translateX(0) rotateY(0deg);
+    }
+    
+    /* Variasi animasi semi 3D kanan */
+    .scroll-reveal-right {
+        opacity: 0;
+        transform: translateX(60px) rotateY(-25deg);
+        transition: all 0.8s cubic-bezier(0.34, 1.2, 0.64, 1);
+        transform-style: preserve-3d;
+        perspective: 1000px;
+    }
+    
+    .scroll-reveal-right.revealed {
+        opacity: 1;
+        transform: translateX(0) rotateY(0deg);
+    }
+    
+    /* Variasi animasi scale dengan efek pop 3D */
+    .scroll-reveal-scale {
+        opacity: 0;
+        transform: scale(0.85) translateZ(-50px);
+        transition: all 0.7s cubic-bezier(0.34, 1.3, 0.55, 1);
+        transform-style: preserve-3d;
+        perspective: 800px;
+    }
+    
+    .scroll-reveal-scale.revealed {
+        opacity: 1;
+        transform: scale(1) translateZ(0);
+    }
+    
+    /* Efek blur saat muncul (semi 3D depth of field) */
+    .scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale {
+        filter: blur(3px);
+        transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.7s ease-out;
+    }
+    
+    .scroll-reveal.revealed, 
+    .scroll-reveal-left.revealed, 
+    .scroll-reveal-right.revealed, 
+    .scroll-reveal-scale.revealed {
+        filter: blur(0);
+    }
+    
+    /* Delay dengan easing berbeda untuk efek berurutan yang lebih organik */
+    .delay-1 { transition-delay: 0.08s; }
+    .delay-2 { transition-delay: 0.16s; }
+    .delay-3 { transition-delay: 0.24s; }
+    .delay-4 { transition-delay: 0.32s; }
+    .delay-5 { transition-delay: 0.42s; }
+    
+    /* Efek shadow 3D saat hover untuk elemen yang sudah muncul */
+    .scroll-reveal.revealed:hover,
+    .scroll-reveal-left.revealed:hover,
+    .scroll-reveal-right.revealed:hover,
+    .scroll-reveal-scale.revealed:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 20px 35px rgba(0,0,0,0.12);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    /* Efek khusus untuk gallery item dengan efek tilt 3D */
+    .gallery-item {
+        transform-style: preserve-3d;
+        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    .gallery-item.revealed:hover {
+        transform: translateY(-8px) rotateX(3deg);
+        box-shadow: 0 25px 40px rgba(0,0,0,0.15);
+    }
+    
+    /* Efek khusus untuk event card dengan depth */
+    .event-card {
+        transform-style: preserve-3d;
+        transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    .event-card.revealed:hover {
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: 0 30px 50px rgba(0,0,0,0.1);
+    }
+    
+    /* Efek untuk timeline items */
+    .timeline-item {
+        transform-style: preserve-3d;
+        transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .timeline-item.revealed:hover {
+        transform: translateX(5px) translateZ(10px);
+    }
+    
+    .timeline-item.left.revealed:hover {
+        transform: translateX(-5px) translateZ(10px);
+    }
+
         /* --- MAIN CONTENT --- */
         .main-content { opacity: 0; transition: opacity 1s ease 0.5s; padding-bottom: 100px; }
         body.opened { overflow-y: auto; }
@@ -709,6 +839,116 @@ body.opened .cover {
         .btn-maps { display: inline-block; padding: 12px 25px; border: 1.5px solid var(--primary); color: var(--primary); text-decoration: none; border-radius: 50px; font-size: 13px; font-weight: 600; transition: 0.3s; }
 
         footer { padding: 60px; text-align: center; background: #fff; border-top: 1px solid #f5f5f5; }
+
+        /* Style untuk cover dengan video */
+.cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.cover-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+    transition: opacity 1s ease;
+}
+
+.cover-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: cover;
+    z-index: -2;
+}
+
+.cover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+    z-index: -1;
+}
+
+.cover-content {
+    position: relative;
+    z-index: 10;
+    padding: 50px 40px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(18px);
+    border-radius: 35px;
+    border: 1px solid rgba(255,255,255,0.25);
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tombol buka undangan */
+.btn-open {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    padding: 16px 40px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    box-shadow: 0 10px 25px rgba(124,92,82,0.35);
+    position: relative;
+    z-index: 20;
+}
+
+.btn-open:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(124,92,82,0.5);
+}
+
+/* Animasi fade out untuk background foto saat video muncul */
+.cover-bg.fade-out {
+    opacity: 0;
+}
+
+/* Saat undangan sudah dibuka */
+body.opened .cover {
+    transform: translateY(-100%);
+    transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1);
+    visibility: hidden;
+}
+
+body.opened .cover-video {
+    display: none;
+}
     </style>
 </head>
 <body id="body">
@@ -720,20 +960,29 @@ body.opened .cover {
     <div id="music-control" onclick="toggleMusic()">🎵</div>
 
     <section class="cover" id="cover">
-    <div class="cover-bg" style="background-image: url('<?= $cover_bg ?>');"></div>
-        <div class="cover-content">
-            <p style="letter-spacing: 4px; font-size: 11px; text-transform: uppercase; margin-bottom: 10px;">The Wedding of</p>
-            <h1 class="cover-title"><?= explode(' ', $pria)[0] ?> & <?= explode(' ', $wanita)[0] ?></h1>
-            <p style="letter-spacing: 2px; margin-bottom: 30px; font-weight: 300;"><?= $tanggal_wedding ?></p>
+    <!-- Background default (foto) -->
+    <div class="cover-bg" id="coverBg" style="background-image: url('<?= $cover_bg ?>');"></div>
+    
+    <!-- Video yang akan muncul setelah 2 detik -->
+    <video id="coverVideo" class="cover-video" muted playsinline loop style="display: none;">
+        <source src="<?= $cover_video ?>" type="video/mp4">
+    </video>
+    
+    <div class="cover-overlay"></div>
+    
+    <div class="cover-content">
+        <p style="letter-spacing: 4px; font-size: 11px; text-transform: uppercase; margin-bottom: 10px;">The Wedding of</p>
+        <h1 class="cover-title"><?= explode(' ', $pria)[0] ?> & <?= explode(' ', $wanita)[0] ?></h1>
+        <p style="letter-spacing: 2px; margin-bottom: 30px; font-weight: 300;"><?= $tanggal_wedding ?></p>
 
-            <div class="recipient-box">
-                <p style="font-size: 11px; color: #aaa; margin-bottom: 8px;">Kpd Bapak/Ibu/Saudara/i:</p>
-                <h3 style="font-size: 1.5rem; font-family: 'Playfair Display', serif;"><?= $nama_tamu ?></h3>
-            </div>
-
-            <button class="btn-open" onclick="startInvitation()">BUKA UNDANGAN</button>
+        <div class="recipient-box">
+            <p style="font-size: 11px; color: #aaa; margin-bottom: 8px;">Kpd Bapak/Ibu/Saudara/i:</p>
+            <h3 style="font-size: 1.5rem; font-family: 'Playfair Display', serif;"><?= $nama_tamu ?></h3>
         </div>
-    </section>
+
+        <button class="btn-open" id="btnOpenInvitation">BUKA UNDANGAN</button>
+    </div>
+</section>
 
     
 
@@ -959,7 +1208,7 @@ body.opened .cover {
         </div>
 
         <footer>
-        <p style="font-size: 13px; color: #bbb;">© 2026 <?= explode(' ', $pria)[0] ?> & <?= explode(' ', $wanita)[0] ?>. All rights reserved.</p>
+        <p style="font-size: 13px; color: #bbb;">Created By Undanganku Gen-Z.</p>
         </footer>
     </div>
 
@@ -967,20 +1216,89 @@ body.opened .cover {
         const audio = document.getElementById("weddingMusic");
         const musicControl = document.getElementById("music-control");
 
-        function startInvitation() {
-            // 1. Tambahkan class opened untuk transisi cover
-            document.body.classList.add('opened');
-            
-            // 2. Mainkan musik
-            audio.play().catch(error => {
-                console.log("Browser memblokir autoplay: ", error);
-            });
+        // Hapus variable videoTimer di awal
+let videoTimer = null;
 
-            // 3. Scroll halus ke atas (main content)
-            setTimeout(() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 1100);
+// Fungsi untuk memulai video
+function startVideo() {
+    const coverBg = document.getElementById('coverBg');
+    const coverVideo = document.getElementById('coverVideo');
+    
+    if (coverVideo && coverVideo.querySelector('source')) {
+        coverVideo.style.display = 'block';
+        if (coverBg) {
+            coverBg.classList.add('fade-out');
         }
+        
+        coverVideo.play().catch(error => {
+            console.log('Autoplay video gagal: ', error);
+            coverVideo.style.display = 'none';
+            if (coverBg) {
+                coverBg.classList.remove('fade-out');
+            }
+        });
+    }
+}
+
+// Set timer 2 detik untuk memulai video
+if (typeof videoTimer !== 'undefined' && videoTimer) {
+    clearTimeout(videoTimer);
+}
+videoTimer = setTimeout(startVideo, 2000);
+
+// Fungsi untuk membuka undangan
+function startInvitation() {
+    // Hentikan video jika sedang berjalan
+    const coverVideo = document.getElementById('coverVideo');
+    if (coverVideo) {
+        coverVideo.pause();
+    }
+    
+    // Hapus timer video jika masih berjalan
+    if (videoTimer) {
+        clearTimeout(videoTimer);
+        videoTimer = null;
+    }
+    
+    // Tambahkan class opened untuk transisi cover
+    document.body.classList.add('opened');
+    
+    // Mainkan musik
+    const audio = document.getElementById("weddingMusic");
+    if (audio) {
+        audio.play().catch(error => {
+            console.log("Browser memblokir autoplay: ", error);
+        });
+    }
+
+    // Scroll halus ke atas
+    setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 1100);
+}
+
+// Pastikan tombol bisa diklik - tambahkan event listener manual
+document.addEventListener('DOMContentLoaded', function() {
+    const btnOpen = document.querySelector('.btn-open');
+    if (btnOpen) {
+        // Hapus atribut onclick jika ada
+        btnOpen.removeAttribute('onclick');
+        // Tambahkan event listener baru
+        btnOpen.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            startInvitation();
+        });
+    }
+    
+    // Hentikan propagasi event pada cover content
+    const coverContent = document.querySelector('.cover-content');
+    if (coverContent) {
+        coverContent.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    }
+});
 
         function toggleMusic() {
             if (audio.paused) {
@@ -1060,9 +1378,135 @@ if (comments.length > 3) {
     commentsList.style.maxHeight = "none";
     commentsList.style.overflowY = "hidden";
 }
+
+(function() {
+        // Tambahkan class untuk elemen yang akan dianimasi
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Kumpulkan semua elemen yang ingin dianimasi saat scroll
+            const elementsToAnimate = [
+                // Quotes container
+                { selector: '.quotes-container', type: 'reveal' },
+                // Countdown container
+                { selector: '.countdown-container', type: 'reveal' },
+                // Section title gallery
+                { selector: '.section-title', type: 'reveal' },
+                { selector: '.section-subtitle', type: 'reveal', delay: 'delay-1' },
+                // Setiap gallery item
+                { selector: '.gallery-item', type: 'reveal', each: true, delayClass: ['delay-1', 'delay-2', 'delay-3', 'delay-4'] },
+                // Story section title
+                { selector: '.story-section .salam-h3', type: 'reveal' },
+                // Setiap timeline item
+                { selector: '.timeline-item', type: 'reveal', each: true },
+                // Event card
+                { selector: '.event-card', type: 'reveal-scale' },
+                // Setiap event item di dalam event card
+                { selector: '.event-item', type: 'reveal-left', each: true, delayClass: ['delay-1', 'delay-2'] },
+                // Maps container
+                { selector: '.maps-container', type: 'reveal' },
+                // Tombol maps
+                { selector: '.btn-maps', type: 'reveal-scale', delay: 'delay-1' },
+                // Comment section
+                { selector: '.comment-section', type: 'reveal' },
+                // Gift container
+                { selector: '.gift-container', type: 'reveal' },
+                // Gift cards
+                { selector: '.gift-card', type: 'reveal-scale', each: true, delayClass: ['delay-1', 'delay-2', 'delay-3'] },
+                // Setiap comment item yang sudah ada
+                { selector: '.comment-item', type: 'reveal-right', each: true },
+                // Footer
+                { selector: 'footer', type: 'reveal' },
+                // Mempelai detail
+                { selector: '.mempelai-detail', type: 'reveal-scale', each: true, delayClass: ['delay-1', 'delay-3'] },
+                // Salam pembuka
+                { selector: '.salam-h3:first-of-type', type: 'reveal' },
+                // Teks salam
+                { selector: '.container > p:first-of-type', type: 'reveal', delay: 'delay-1' },
+                // Flower decorations
+                { selector: '.flower', type: 'reveal-scale', each: true, delayClass: ['delay-2', 'delay-4', 'delay-1'] }
+            ];
+            
+            // Fungsi untuk menambahkan class ke elemen
+            function addScrollClass(element, type, delayClass = '') {
+                if (type === 'reveal') {
+                    element.classList.add('scroll-reveal');
+                } else if (type === 'reveal-left') {
+                    element.classList.add('scroll-reveal-left');
+                } else if (type === 'reveal-right') {
+                    element.classList.add('scroll-reveal-right');
+                } else if (type === 'reveal-scale') {
+                    element.classList.add('scroll-reveal-scale');
+                }
+                if (delayClass) {
+                    element.classList.add(delayClass);
+                }
+            }
+            
+            // Terapkan class ke elemen
+            elementsToAnimate.forEach(item => {
+                if (item.each) {
+                    const elements = document.querySelectorAll(item.selector);
+                    elements.forEach((el, index) => {
+                        let delay = '';
+                        if (item.delayClass) {
+                            if (Array.isArray(item.delayClass)) {
+                                delay = item.delayClass[index % item.delayClass.length];
+                            } else {
+                                delay = item.delayClass;
+                            }
+                        } else if (item.delay) {
+                            delay = item.delay;
+                        }
+                        addScrollClass(el, item.type, delay);
+                    });
+                } else {
+                    const el = document.querySelector(item.selector);
+                    if (el) {
+                        let delay = item.delay || '';
+                        addScrollClass(el, item.type, delay);
+                    }
+                }
+            });
+            
+            // OBSERVER UNTUK MENDETEKSI SCROLL DENGAN REPEAT (BISA BERULANG)
+            const observerOptions = {
+                threshold: 0.12,  // Sedikit lebih rendah agar lebih sensitif
+                rootMargin: '0px 0px -20px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Tambah class revealed saat elemen masuk viewport
+                        setTimeout(() => {
+                            entry.target.classList.add('revealed');
+                        }, 50);
+                    } else {
+                        // HAPUS class revealed saat elemen keluar viewport
+                        // Ini yang membuat animasi bisa berulang saat scroll ke atas
+                        entry.target.classList.remove('revealed');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe semua elemen yang sudah diberi class animasi
+            const animatedElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale');
+            animatedElements.forEach(el => observer.observe(el));
+            
+            // JIKA ELEMEN SUDAH TERLIHAT SAAT PERTAMA KALI (setelah cover hilang)
+            setTimeout(() => {
+                animatedElements.forEach((el, index) => {
+                    const rect = el.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    if (rect.top < windowHeight - 80) {
+                        setTimeout(() => {
+                            el.classList.add('revealed');
+                        }, index * 30);
+                    }
+                });
+            }, 1600);
+        });
+    })();
     </script>
-    <div class="flower flower1">🌸</div>
-<div class="flower flower2">✨</div>
-<div class="flower flower3">🌿</div>
 </body>
 </html>
