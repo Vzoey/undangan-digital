@@ -31,7 +31,7 @@ $google_maps_link = "https://maps.app.goo.gl/VVgNaFRMQDdHwKME68";
 $embed_url = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.101917516435!2d107.57616890000001!3d-6.8783919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e682ce98bfb1%3A0x7a823a31a11f50ac!2sGedung%20Serbaguna%20RW%2008%20Sarijadi!5e0!3m2!1sid!2sid!4v1778831037127!5m2!1sid!2sid";
 
 // --- KONFIGURASI MUSIK ---
-$musik_url = "assets/demicinta.mp3"; // Ganti dengan link file mp3 pilihan Anda
+$musik_url = "assets/akumemilihmu.mp3"; // Ganti dengan link file mp3 pilihan Anda
 
 // Nama file notepad untuk menyimpan ucapan
 $file_penyimpanan = "assets/ucapan.txt";
