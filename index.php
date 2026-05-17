@@ -5,33 +5,33 @@
 
 $nama_tamu = isset($_GET['to']) ? htmlspecialchars($_GET['to']) : 'Tamu Undangan';
 
-$pria = "Marco";
-$wanita = "Yeji";
+$pria = "Nandira Rizki";
+$wanita = "Astri Astuti";
 
 // ... variabel yang sudah ada ...
-$pria = "Marco";
-$wanita = "Yeji";
+$pria = "Nandira Rizki";
+$wanita = "Astri astuti";
 
 // Tambahkan variabel baru di sini
-$ig_pria = "";
-$ig_wanita = "yezyizhere";
+$ig_pria = "nandirzki_";
+$ig_wanita = "astri.a__";
 
-$tanggal_wedding = "2026-05-17";
+$tanggal_wedding = "2026-06-06";
 
 // JAM ACARA
 $jam_akad = "09.45 - 11.00 WIB";
 $jam_resepsi = "11.00 - Selesai";
 
 // JAM MULAI AKAD UNTUK COUNTDOWN
-$akad_mulai = "09:45:00";
+$akad_mulai = "18:00:00";
 
-$nama_gedung = "Gedung Serbaguna";
-$alamat_lengkap = "Jl. Sarijadi Raya No. 123\nRT 02/RW 05, Kel. Sarijadi\nKec. Sukasari, Kota Bandung\nJawa Barat 40164";
-$google_maps_link = "https://maps.app.goo.gl/VVgNaFRMQDdHwKME68";
-$embed_url = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.101917516435!2d107.57616890000001!3d-6.8783919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e682ce98bfb1%3A0x7a823a31a11f50ac!2sGedung%20Serbaguna%20RW%2008%20Sarijadi!5e0!3m2!1sid!2sid!4v1778831037127!5m2!1sid!2sid";
+$nama_gedung = "Kediaman Mempelai Pria";
+$alamat_lengkap = "Dusun Cibiru RT 04 RW 10 Desa Cipacing Kec. Jatinangor Kab. Sumedang";
+$google_maps_link = "https://maps.app.goo.gl/qkFMt1dGGC6fFosN6";
+$embed_url = "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d375.43901740796554!2d107.76528670784023!3d-6.9474443450063905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwNTYnNTEuMCJTIDEwN8KwNDUnNTUuNCJF!5e0!3m2!1sid!2sid!4v1779023021330!5m2!1sid!2sid";
 
 // --- KONFIGURASI MUSIK ---
-$musik_url = "assets/akumemilihmu.mp3"; // Ganti dengan link file mp3 pilihan Anda
+$musik_url = "assets/beauti.mp3"; // Ganti dengan link file mp3 pilihan Anda
 
 // Nama file notepad untuk menyimpan ucapan
 $file_penyimpanan = "assets/ucapan.txt";
@@ -58,11 +58,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['kirim_ucapan'])) {
 $cover_type = "video"; // 'foto' atau 'video'
 
 // Jika pakai FOTO
-$cover_bg = "assets/prewed.jpg";
+$cover_bg = "assets/prewed.jpeg";
 
 // Jika pakai VIDEO (untuk preview sebelum undangan dibuka)
-$cover_video = "assets/cover-video.mp4"; // Ganti dengan path video Anda
-$cover_video_poster = "assets/prewed.jpg";
+$cover_video = "assets/vid.mp4"; // Ganti dengan path video Anda
+$cover_video_poster = "assets/prewed.jpeg";
 ?>
 
 <!DOCTYPE html>
@@ -1230,12 +1230,12 @@ $cover_video_poster = "assets/prewed.jpg";
                 <div class="mempelai-detail" style="margin-bottom: 30px;">
                     <div
                         style="width: 150px; height: 150px; margin: 0 auto 15px; border-radius: 50%; overflow: hidden; border: 3px solid var(--primary); padding: 5px;">
-                        <img src="assets/pria.jpg"
+                        <img src="assets/pria.jpeg"
                             style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" alt="Foto Pria">
                     </div>
                     <h2 class="couple-name"><?= $pria ?></h2>
-                    <p style="font-size: 0.85rem; color: #999;">Putra dari Bapak Fulan & Ibu Fulanah</p>
-                    <a href="https://instagram.com/<?= $ig_pria ?>" target="_blank"
+                    <p style="font-size: 0.85rem; color: #999;">Putra dari Bapak Kusdian & Ibu Romlah sutiati S,pd </p>
+                    <a href="https://www.instagram.com/nandirzki_/?utm_source=ig_web_button_share_sheet<?= $ig_pria ?>" target="_blank"
                         style="text-decoration: none; display: inline-flex; align-items: center; margin-top: 10px; color: var(--primary); font-size: 0.8rem;">
                         <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="16"
                             style="margin-right: 5px;">
@@ -1250,12 +1250,12 @@ $cover_video_poster = "assets/prewed.jpg";
                 <div class="mempelai-detail" style="margin-top: 30px;">
                     <div
                         style="width: 150px; height: 150px; margin: 0 auto 15px; border-radius: 50%; overflow: hidden; border: 3px solid var(--primary); padding: 5px;">
-                        <img src="assets/wanita.jpg"
+                        <img src="assets/wanita.jpeg"
                             style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" alt="Foto Wanita">
                     </div>
                     <h2 class="couple-name"><?= $wanita ?></h2>
-                    <p style="font-size: 0.85rem; color: #999;">Putri dari Bapak Fulan & Ibu Fulanah</p>
-                    <a href="https://instagram.com/yezyizhere" target="_blank" style="...">
+                    <p style="font-size: 0.85rem; color: #999;">Putri dari Bapak Dadang sudrajat & Ibu Ela sumiati</p>
+                    <a href="https://www.instagram.com/astri.a__/?utm_source=ig_web_button_share_sheet" target="_blank" style="...">
                         <a href="https://instagram.com/<?= $ig_wanita ?>" target="_blank"
                             style="text-decoration: none; display: inline-flex; align-items: center; margin-top: 10px; color: var(--primary); font-size: 0.8rem;">
                             <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="16"
@@ -1300,19 +1300,19 @@ $cover_video_poster = "assets/prewed.jpg";
             </div>
             <div class="gallery">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80"
+                    <img src="assets/1.jpeg"
                         class="gallery-img" alt="Prewed 1">
                 </div>
                 <div class="gallery-item stagger">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80"
+                    <img src="assets/2.jpeg"
                         class="gallery-img" alt="Prewed 2">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80"
+                    <img src="assets/4.jpeg"
                         class="gallery-img" alt="Prewed 3">
                 </div>
                 <div class="gallery-item stagger">
-                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80"
+                    <img src="assets/3.jpeg"
                         class="gallery-img" alt="Prewed 4">
                 </div>
             </div>
@@ -1326,28 +1326,25 @@ $cover_video_poster = "assets/prewed.jpg";
                 <div class="timeline">
                     <div class="timeline-item left">
                         <div class="story-content">
-                            <span class="story-date">Januari 2024</span>
+                            <span class="story-date">2022</span>
                             <h4 class="story-title">Pertama Bertemu</h4>
-                            <p class="story-text">Berawal dari pertemuan singkat di sebuah perpustakaan kota, tak
-                                disangka obrolan kecil membawa kami pada perasaan yang besar.</p>
+                            <p class="story-text">Satu sekolahan, tapi baru benar-benar bertemu saat ujian akhir semester. Waktu itu Nandira tidak membawa pulpen untuk tanda tangan absen — aku meminjamkannya. Dari hal sesederhana itu, semuanya dimulai.</p>
                         </div>
                     </div>
 
                     <div class="timeline-item right" style="transition-delay: 0.3s;">
                         <div class="story-content">
-                            <span class="story-date">Mei 2025</span>
-                            <h4 class="story-title">Menjalin Kasih</h4>
-                            <p class="story-text">Setelah setahun saling mengenal, kami memutuskan untuk berkomitmen
-                                melangkah bersama dalam suka maupun duka.</p>
+                            <span class="story-date">2023</span>
+                            <h4 class="story-title">Komitmen</h4>
+                            <p class="story-text">Setelah lulus sekolah, Nandira datang membawa sebuah cincin dan dengan penuh keyakinan memakainya di jari manisku. Di tahun 2023 itu, ia resmi berkomitmen — bukan dengan kata-kata biasa, tapi dengan sebuah janji yang ia ucapkan langsung dari hatinya. Bahwa aku adalah cinta pertama dan terakhirnya. Dan hingga hari ini, cincinnya masih melingkar di jariku sebagai pengingat bahwa ia sungguh-sungguh.</p>
                         </div>
                     </div>
 
                     <div class="timeline-item left" style="transition-delay: 0.6s;">
                         <div class="story-content">
-                            <span class="story-date">Juli 2027</span>
+                            <span class="story-date">10 Agustus 2024</span>
                             <h4 class="story-title">Lamaran</h4>
-                            <p class="story-text">Di depan kedua keluarga besar, kami mengikrarkan janji untuk membawa
-                                hubungan ini ke jenjang yang lebih suci.</p>
+                            <p class="story-text">Di hari ulang tahunku, Nandira hadir dengan kejutan yang tak pernah aku duga — ia datang bersama keluarga kecilku dan para sahabatku. Di sana ia memberikan sebuah cincin, tapi tanpa sepatah kata pun tentang alasannya. Aku sempat bertanya-tanya. Ternyata ia malu bicara di depan semua orang. Baru setelahnya, ia berbisik pelan — bahwa cincin itu bukan sekadar hadiah. Itu adalah caranya mengajakku melangkah ke jenjang yang lebih serius..</p>
                         </div>
                     </div>
                 </div>
@@ -1357,22 +1354,12 @@ $cover_video_poster = "assets/prewed.jpg";
                 <div class="event-item">
                     <p
                         style="text-transform: uppercase; letter-spacing: 3px; font-size: 11px; color: var(--primary); margin-bottom: 10px;">
-                        Akad Nikah
+                        Tasyakuran
                     </p>
 
                     <p style="font-size: 1.2rem; font-weight: 600;">
-                        <?= $jam_akad ?>
-                    </p>
-                </div>
 
-                <div class="event-item">
-                    <p
-                        style="text-transform: uppercase; letter-spacing: 3px; font-size: 11px; color: var(--primary); margin-bottom: 10px;">
-                        Resepsi
-                    </p>
-
-                    <p style="font-size: 1.2rem; font-weight: 600;">
-                        <?= $jam_resepsi ?>
+Kamis, 4 Juni – Sabtu, 6 Juni 2026
                     </p>
                 </div>
 
@@ -1438,35 +1425,24 @@ $cover_video_poster = "assets/prewed.jpg";
 
                         <div class="gift-options">
                             <button class="btn-option active" onclick="showGift('bank', this)">Transfer Bank</button>
-                            <button class="btn-option" onclick="showGift('ewallet', this)">E-Wallet</button>
                             <button class="btn-option" onclick="showGift('kh', this)">Kirim Hadiah Langsung</button>
                         </div>
 
                         <div id="gift-bank" class="gift-card active">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg"
-                                class="bank-logo" alt="BCA">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/BANK_BRI_logo.svg"
+                                class="bank-logo" alt="BRi">
                             <p style="font-size: 12px; color: #999;">Nomor Rekening:</p>
-                            <span class="account-number" id="rek-bca">1234 5678 90</span>
-                            <p style="font-size: 14px; font-weight: 600;">a.n Marco</p>
+                            <span class="account-number" id="rek-bca">443601025919534</span>
+                            <p style="font-size: 14px; font-weight: 600;">a.n Romlah Sutiati</p>
                             <button class="btn-maps" style="margin-top: 15px; padding: 8px 20px; font-size: 11px;"
                                 onclick="copyNumber('rek-bca', this)">SALIN NO. REKENING</button>
-                        </div>
-
-                        <div id="gift-ewallet" class="gift-card">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Gopay_logo.svg"
-                                class="bank-logo" alt="GOPAY">
-                            <p style="font-size: 12px; color: #999;">Nomor GoPay:</p>
-                            <span class="account-number" id="no-gopay">0812 3456 7890</span>
-                            <p style="font-size: 14px; font-weight: 600;">a.n Marco</p>
-                            <button class="btn-maps" style="margin-top: 15px; padding: 8px 20px; font-size: 11px;"
-                                onclick="copyNumber('no-gopay', this)">SALIN NOMOR GOPAY</button>
                         </div>
                         <div id="gift-kh" class="gift-card">
                             <div style="font-size: 40px; margin-bottom: 15px; text-align: center;">🎁</div>
                             <p style="font-size: 12px; color: #999; text-align: center;">Kirim Hadiah Langsung ke Alamat
                             </p>
                             <p style="font-size: 14px; font-weight: 600; text-align: center; margin-bottom: 10px;">
-                                Penerima <?= $pria ?> & <?= $wanita ?></p>
+                                Penerima Nandira Rizki</p>
 
                             <div style="background: #f9f6f2; padding: 15px; border-radius: 15px; margin: 15px 0;">
                                 <p style="font-size: 11px; color: #999; margin-bottom: 5px;">ALAMAT PENGIRIMAN</p>
