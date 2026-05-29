@@ -1234,7 +1234,7 @@ $cover_video_poster = "assets/prewed.jpeg";
                             style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" alt="Foto Pria">
                     </div>
                     <h2 class="couple-name"><?= $pria ?></h2>
-                    <p style="font-size: 0.85rem; color: #999;">Putra dari Bapak Kusdian & Ibu Romlah sutiati S,pd </p>
+                    <p style="font-size: 0.85rem; color: #999;">Putra dari Bapak Kusdian & Ibu Romlah Sutiati, S.Pd </p>
                     <a href="https://www.instagram.com/nandirzki_/?utm_source=ig_web_button_share_sheet<?= $ig_pria ?>" target="_blank"
                         style="text-decoration: none; display: inline-flex; align-items: center; margin-top: 10px; color: var(--primary); font-size: 0.8rem;">
                         <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="16"
